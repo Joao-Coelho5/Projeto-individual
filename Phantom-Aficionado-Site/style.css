@@ -1,0 +1,22 @@
+body{
+    margin: 0;
+    background-image: url(Assets/P5Redstars.gif);
+}
+
+/* INICIO HEADER/NAVBAR */
+.navbar{
+
+    width: 100%;
+    height: 110px;
+    background-image: url(./Assets/p5x_bgstar_20230301.MP4_5x_loop720P_HD.gif);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.logo{
+    height: 100px;
+}
