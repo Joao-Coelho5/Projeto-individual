@@ -1,22 +1,148 @@
-body{
+html, .body_index {
     margin: 0;
     background-image: url(Assets/P5Redstars.gif);
+    height: 100%;
+}
+
+html, .body_cadastro{
+    margin: 0;
+        background-image: url(https://i.redd.it/54obu7eenrq61.gif);
+        height: 100%;
+}
+
+@font-face {
+    font-family: 'fonteP5';
+    src: url(./Fonts/Expose-Regular.otf) format('truetype');
 }
 
 /* INICIO HEADER/NAVBAR */
-.navbar{
+.navbar {
 
     width: 100%;
     height: 110px;
     background-image: url(./Assets/p5x_bgstar_20230301.MP4_5x_loop720P_HD.gif);
+    background-size: cover;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     position: fixed;
+    gap: 10px;
     top: 0;
     left: 0;
 }
 
-.logo{
-    height: 100px;
+.btNav {
+    background-size: cover;
+    gap: 20px;
 }
+
+.botoes {
+    font-family: 'fonteP5';
+    font-size: 30px;
+    height: 80px;
+    width: 300px;
+    background-image: url(./Assets/caixaDeTexto.png);
+    background-size: cover;
+    background-position: center;
+    border: none;
+    color: white;
+    background-color: transparent;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.botoes:hover {
+    height: 90px;
+}
+
+.logo {
+    height: 100px;
+    display: flex;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.logo:hover {
+    height: 110px;
+}
+
+/* INICIO BODY */
+
+.pagina {
+    display: flex;
+    margin-top: 110px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+#corpo {
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    height: 99%;
+    width: 99%;
+    background-image: url(Assets/P5city_day.jpg);
+    background-size: cover;
+    align-items: flex-start;
+    justify-content: flex-start;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+#div_inicio {
+    display: flex;
+    justify-content: flex-start;
+    gap: 280px;
+    padding-left: 10px;
+    width: 100%;
+    font-family: 'fonteP5';
+    font-size: 80px;
+    background-color: rgba(0, 0, 0, 0.58);
+    border-bottom: 2px solid white;
+}
+
+#div_conteudo {
+    font-family: 'fonteP5';
+    font-size: 50px;
+    text-align: center;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-image: url(Assets/caixaVermelha1.webp);
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/*FIM BODY INDEX */
+
+/* PAGINA CADASTRO*/
+
+    .div_container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 110px;
+        background-image: url(Assets/P5MenuSEMFUNDO.png);
+        background-size: cover;
+        width: 100%;
+    }
+
+    #card_cadastro {
+        font-family: 'fonteP5';
+        font-size: 50px;
+        height: 600px;
+        width: 600px;
+        border-radius: 15px;
+        margin-top: 130px;
+        background-color: rgba(255, 255, 255, 0.637);
+        text-align: center;
+        border-color: red;
+        
+    }
