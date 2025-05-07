@@ -1,13 +1,15 @@
-html, .body_index {
+html,
+.body_index {
     margin: 0;
     background-image: url(Assets/P5Redstars.gif);
     height: 100%;
 }
 
-html, .body_cadastro{
+.body_cadastro {
     margin: 0;
-        background-image: url(https://i.redd.it/54obu7eenrq61.gif);
-        height: 100%;
+    padding: 0;
+    background-image: url(https://i.redd.it/54obu7eenrq61.gif);
+    height: 100%;
 }
 
 @font-face {
@@ -65,13 +67,14 @@ html, .body_cadastro{
 }
 
 .logo:hover {
-    height: 110px;
+    height: 110px
 }
 
 /* INICIO BODY */
 
 .pagina {
     display: flex;
+    flex-direction: column;
     margin-top: 110px;
     height: 100%;
     align-items: center;
@@ -106,43 +109,126 @@ html, .body_cadastro{
 }
 
 #div_conteudo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 60px;
     font-family: 'fonteP5';
     font-size: 50px;
+    color: white;
+    text-shadow: 5px 5px 5px black;
     text-align: center;
-    display: flex;
     width: 100%;
     height: 100%;
     background-image: url(Assets/caixaVermelha1.webp);
     background-size: cover;
-    justify-content: center;
+}
+
+.input {
+    color: white;
+    font-size: 20px;
+    width: 300px;
+    height: 80px;
+    background-image: url(Assets/caixaDeTexto.png);
+    background-size: cover;
+    background-position: center;
+    background-color: transparent;
+    text-align: center;
+    border: solid transparent;
+}
+
+.div_populares {
+    height: 100%;
+    width: 100%;
+    background-image: url(https://i.redd.it/54obu7eenrq61.gif);
+    color: rgb(255, 255, 255);
+}
+
+.div_lista {
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
-
+.div_lista h1 {
+    font-size: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    height: 300px;
+    width: 70%;
+    font-family: 'fonteP5';
+    text-align: center;
+    background-image: url(Assets/caixaDeTexto.png);
+    background-size: cover;
+    background-position: center;
+}
 
 /*FIM BODY INDEX */
 
-/* PAGINA CADASTRO*/
+/* INICIO CADASTRO*/
 
-    .div_container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 110px;
-        background-image: url(Assets/P5MenuSEMFUNDO.png);
-        background-size: cover;
-        width: 100%;
-    }
+.div_container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 110px;
+    background-image: url(Assets/P5MenuSEMFUNDO.png);
+    background-size: cover;
+    height: 100%;
+}
 
-    #card_cadastro {
-        font-family: 'fonteP5';
-        font-size: 50px;
-        height: 600px;
-        width: 600px;
-        border-radius: 15px;
-        margin-top: 130px;
-        background-color: rgba(255, 255, 255, 0.637);
-        text-align: center;
-        border-color: red;
-        
-    }
+#card_cadastro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'fonteP5';
+    font-size: 50px;
+    color: white;
+    height: 100%;
+    width: 600px;
+    background-image: url(Assets/p5x_bgstar_20230301.MP4_5x_loop720P_HD.gif);
+    background-color: transparent;
+    text-align: center;
+    border-right: 5px solid white;
+}
+
+#card_cadastro select{
+    background-color: black;
+}
+
+.div_container button{
+    margin-top: 85px ;
+    height: 85px;
+}
+/* FIM CADASTRO */
+
+
+/* INICIO LOGIN */
+
+.div_container_login {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 110px;
+    height: 100%;
+    background-image: url(Assets/loginWallSemFundo.png);
+    background-size: cover;
+}
+
+.card_login {
+    font-family: 'fonteP5';
+    font-size: 50px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+    height: 70%;
+    width: 700px;
+    background-image: url(Assets/p5x_bgstar_20230301.MP4_5x_loop720P_HD.gif);
+    border-left: 5px solid white;
+    border-bottom: 5px solid white;
+}
