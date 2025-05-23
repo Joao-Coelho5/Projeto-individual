@@ -7,7 +7,8 @@ nome			varchar(45),
 senha			varchar(45),
 email			varchar(45),
 dtNasc			date,
-personagemFavorito varchar(45)
+personagemFavorito varchar(45),
+unique(email)
 );
 
 create table quiz(
@@ -17,3 +18,8 @@ acertos			int not null,
 foreign key (usuarioId)references usuario(id),
 primary key (usuarioId, tentativa)
 );
+
+insert into usuario(nome, senha, email, dtNasc, personagemFavorito)
+			values('jotape8085', 'urubu100', 'swiplelubby@gmail.com', '2003-08-05', 'Akechi');
+            
+select * from usuario;

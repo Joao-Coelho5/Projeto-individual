@@ -1,0 +1,381 @@
+html,
+.body_index {
+    margin: 0;
+    background-image: url(../assets/P5Redstars.gif);
+    height: 100%;
+}
+
+html,
+.body_cadastro {
+    margin: 0;
+    padding: 0;
+    background-image: url(https://i.redd.it/54obu7eenrq61.gif);
+    height: 100%;
+}
+
+@font-face {
+    font-family: 'fonteP5';
+    src: url(../assets/Expose-Regular.otf) format('truetype');
+}
+
+/* INICIO HEADER/NAVBAR */
+.navbar {
+
+    width: 100%;
+    height: 110px;
+    background-image: url(../assets/p5x_bgstar_20230301.MP4_5x_loop720P_HD.gif);
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    gap: 10px;
+    top: 0;
+    left: 0;
+    border-bottom: 3px solid white;
+}
+
+
+.botoes {
+    font-family: 'fonteP5';
+    font-size: 30px;
+    height: 80px;
+    width: 300px;
+    line-height: 80px;
+    color: white;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+    position: relative;
+    padding-left: 20px;
+    padding-right: 60px; /* espaço para imagem */
+    text-align: center;
+}
+
+.botoes:hover {
+    font-size: 40px;
+}
+
+.botoes::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-image: url('../assets/facaP5-removebg-preview.png'); /* substitua pelo seu caminho */
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0;
+}
+
+.botoes:hover::after {
+    opacity: 1;
+}
+
+
+.logo {
+    height: 100px;
+    display: flex;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.logo:hover {
+    height: 110px
+}
+
+/* INICIO BODY */
+
+.pagina {
+    display: flex;
+    flex-direction: column;
+    margin-top: 110px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+#corpo {
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    height: 99%;
+    width: 99%;
+    background-image: url(../Assets/P5city_day.jpg);
+    background-size: cover;
+    align-items: flex-start;
+    justify-content: flex-start;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+#div_inicio {
+    display: flex;
+    justify-content: flex-start;
+    gap: 280px;
+    padding-left: 10px;
+    width: 100%;
+    font-family: 'fonteP5';
+    font-size: 80px;
+    background-color: rgba(0, 0, 0, 0.58);
+    border-bottom: 2px solid white;
+}
+
+#div_conteudo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 60px;
+    font-family: 'fonteP5';
+    font-size: 45px;
+    color: white;
+    text-shadow: 5px 5px 5px black;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-image: url(../Assets/caixaVermelha1.webp);
+    padding-top: 15px;
+    background-size: cover;
+}
+
+.input {
+    color: white;
+    font-size: 20px;
+    width: 300px;
+    height: 80px;
+    background-image: url(../Assets/caixaDeTexto.png);
+    background-size: contain;
+    background-position: center;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    text-align: center;
+    border: solid transparent;
+    font-family: 'fonteP5';
+}
+
+.div_populares {
+    height: 100%;
+    width: 100%;
+    background-image: url(https://i.redd.it/54obu7eenrq61.gif);
+    color: rgb(255, 255, 255);
+}
+
+.div_lista {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.div_lista h1 {
+    font-size: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    height: 300px;
+    width: 70%;
+    font-family: 'fonteP5';
+    text-align: center;
+    background-image: url(../Assets/caixaDeTexto.png);
+    background-size: cover;
+    background-position: center;
+}
+
+/*FIM BODY INDEX */
+
+/* INICIO CADASTRO*/
+
+.div_container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 110px;
+    background-image: url(../Assets/P5MenuSEMFUNDO.png);
+    background-size: cover;
+    height: 100%;
+}
+
+#card_cadastro {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    font-family: 'fonteP5';
+    font-size: 40px;
+    color: white;
+    height: 100%;
+    width: 630px;
+    background-image: url(../assets/p5x_bgstar_20230301.MP4_5x_loop720P_HD.gif);
+    background-color: transparent;
+    text-align: center;
+}
+
+#coluna{
+    height: 80%;
+    justify-content: space-around;
+}
+
+#card_cadastro select {
+    color: black;
+}
+
+.div_container button {
+    margin-top: 85px;
+    height: 85px;
+}
+
+/* FIM CADASTRO */
+
+
+/* INICIO LOGIN */
+
+.div_container_login {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 110px;
+    height: 100%;
+    background-image: url(../Assets/loginWallSemFundo.png);
+    background-size: cover;
+}
+
+.card_login {
+    font-family: 'fonteP5';
+    font-size: 50px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+    height: 70%;
+    width: 700px;
+    background-image: url(../Assets/p5x_bgstar_20230301.MP4_5x_loop720P_HD.gif);
+    border: 3px solid white;
+    border-radius: 5px;
+}
+
+/* FIM LOGIN */
+
+
+/* INICIO CARD DE ERRO*/
+
+.alerta_erro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card_erro {
+    text-align: center;
+    display: none;
+    color: rgb(255, 255, 255);
+    width: 80px;
+    position: absolute;
+    border-radius: 4px;
+    border: #ED145B 3px solid;
+    padding: 10px;
+    margin-right: 10%;
+    margin-top: 50%;
+}
+
+.loading-div {
+    width: 50px;
+    display: none;
+    background-image: url(https://giffiles.alphacoders.com/610/61079.gif);
+}
+
+/* FOOTER */
+.footer{
+    width: 100%;
+    height: 65px;
+    background-image: url(../assets/p5x_bgstar_20230301.MP4_5x_loop720P_HD.gif);
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border-top: 3px solid white;
+}
+
+
+/* INICIO QUIZ */
+/* Não usar pure white or pure black: https://uxplanet.org/basicdesign-never-use-pure-black-in-typography-36138a3327a6 */
+/* The 4-point grid system: https://medium.com/@sainzkike/controlling-spacing-in-design-systems-multiple-spacing-9bf1afec87f */
+
+:root {
+    --primary-brand-color: #ED145B;
+    --secondary-brand-color: #0762C8;
+    --success: #198754;
+    --success-dark: #095c36;
+    --success-light: #9dd3ba;
+    --warning: #ffc107;
+    --warning-dark: #705400;
+    --warning-light: #fdebb3;
+    --danger: #dc3545;
+    --danger-dark: #990c19;
+    --danger-light: #f0c1c6;
+    --new-gray: #CCCCCC;
+    --new-black: #212427;
+    --new-white: #E8E8E8;
+}
+
+
+
+#pontuacaoEJogo{
+    margin-top: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-colunar {
+    display: flex;
+    flex-direction: column;
+}
+
+.width-fit-content {
+    width: fit-content;
+}
+
+.border-primary {
+    border: 3px solid var(--primary-brand-color);
+}
+
+.border-secondary {
+    border: 3px solid var(--secondary-brand-color);
+}
+
+.padding-8 {
+    padding: 8px;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.text-success-with-bg {
+    color: var(--success-dark);
+    background-color: var(--success-light);
+}
+
+.text-warning-with-bg {
+    color: var(--warning-dark);
+    background-color: var(--warning-light);
+}
+
+.text-danger-with-bg {
+    color: var(--danger-dark);
+    background-color: var(--danger-light);
+}
+
+.text-new-gray {
+    color: var(--new-gray);
+}
+
+/* FIM QUIZ */
