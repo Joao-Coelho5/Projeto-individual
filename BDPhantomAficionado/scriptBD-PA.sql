@@ -22,4 +22,9 @@ primary key (usuarioId, tentativa)
 insert into usuario(nome, senha, email, dtNasc, personagemFavorito)
 			values('jotape8085', 'urubu100', 'swiplelubby@gmail.com', '2003-08-05', 'Akechi');
             
+select personagemFavorito, count(personagemFavorito) 'Votos'
+from usuario 
+group by personagemFavorito
+order by count(personagemFavorito) desc;
+
 select * from usuario;

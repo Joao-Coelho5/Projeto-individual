@@ -18,6 +18,11 @@ html,
     src: url(../assets/Expose-Regular.otf) format('truetype');
 }
 
+html,
+.body_quiz{
+    margin: 0;
+    height: 100%;
+}
 /* INICIO HEADER/NAVBAR */
 .navbar {
 
@@ -35,12 +40,26 @@ html,
     border-bottom: 3px solid white;
 }
 
+.nav_logo{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.nav_botoes{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
 
 .botoes {
     font-family: 'fonteP5';
     font-size: 30px;
     height: 80px;
-    width: 300px;
+    width: 180px;
     line-height: 80px;
     color: white;
     background-color: transparent;
@@ -77,6 +96,7 @@ html,
 
 .logo {
     height: 100px;
+    width: fit-content;
     display: flex;
     background-color: transparent;
     border: none;
@@ -85,7 +105,23 @@ html,
 }
 
 .logo:hover {
-    height: 110px
+    height: 110px;
+}
+
+.navbar .hello {
+    width: 390px;
+    height: 100px;
+    background-image: url(../assets/caixaDeTexto.png);
+    background-size: cover;
+    color: white;
+    font-family: 'fonteP5';
+    text-align: center;
+    font-size: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    margin-bottom: 2px;
 }
 
 /* INICIO BODY */
@@ -159,31 +195,80 @@ html,
 }
 
 .div_populares {
-    height: 100%;
+    height: 1600px;
     width: 100%;
-    background-image: url(https://i.redd.it/54obu7eenrq61.gif);
     color: rgb(255, 255, 255);
-}
-
-.div_lista {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    background-color: rgba(0, 0, 0, 0.548);
 }
 
-.div_lista h1 {
+
+.div_populares h1 {
     font-size: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 10px;
-    height: 300px;
-    width: 70%;
+    height: 310px;
+    width: 72.5%;
     font-family: 'fonteP5';
     text-align: center;
     background-image: url(../Assets/caixaDeTexto.png);
     background-size: cover;
     background-position: center;
+}
+
+.div_informacoes{
+    height: 1000px;
+    width: 100%;
+    background-image: url(../assets/mementosWall.webp);
+    background-size: cover;
+    border-bottom: solid 2px white;
+}
+
+.card_index{
+    border-top: 3px solid white;
+    border-bottom: 3px solid white;
+    width: 100%;
+    height: 250px;
+    background-image: url(../assets/p5x_bgstar_20230301.MP4_5x_loop720P_HD.gif);
+    background-size: cover;
+    font-family: 'fonteP5';
+    font-size: 50px;
+    color: white;
+    text-align: center;
+}
+
+#div_personagens{
+    height: 55%;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+
+#coluna1{
+    height: max-content;
+    width: 50%;
+    text-align: center;
+    font-family: 'fonteP5';
+    font-size: 30px;
+}
+
+#coluna2{
+    height: max-content;
+    width: 50%;
+    font-family: 'fonteP5';
+    font-size: 30px;
+}
+#coluna1 div, #coluna2 div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 /*FIM BODY INDEX */
@@ -226,8 +311,11 @@ html,
 
 .div_container button {
     margin-top: 85px;
-    height: 85px;
+    height: fit-content;
+    width: fit-content;
 }
+
+
 
 /* FIM CADASTRO */
 
@@ -298,9 +386,16 @@ html,
     background-size: cover;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 10px;
     border-top: 3px solid white;
+    text-align: center;
+    color: white;
+}
+
+.footer img{
+    display: flex;
+    justify-self: flex-end;
 }
 
 
@@ -329,6 +424,7 @@ html,
 
 #pontuacaoEJogo{
     margin-top: 110px;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phantom Aficionado</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon"
-        href="assets/icone_site.png">
+    <link rel="shortcut icon" href="assets/icone_site.png">
 </head>
 
-<body class="body_index" onload="carregar()">
+<body class="body_index" onload="carregar(), rankFavoritos()">
     <div class="navbar">
-        <div class="logo">
-            <img src="assets/logo.webp" height="100px" alt="" srcset="">
+        <div class="nav_logo">
+            <img src="assets/logo.webp" height="100px" alt="" srcset="" class="logo">
+            <div class="hello"><span>Take your time, </span><span id="b_usuario">usuário</span>!</div>
         </div>
-        <div class="btNav">
+        <div class="nav_botoes">
             <a href="cadastro.html"><button class="botoes">Cadastro</button></a>
             <a href="login.html"><button class="botoes">Login</button></a>
             <a href="quiz.html"><button class="botoes">QUIZ !</button></a>
@@ -33,22 +33,91 @@
             <div id="div_conteudo">
                 <SPAN>Bem vindo ao site Phantom-Aficionado, <br> onde os fãs de <span><img
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Persona_5_logo.svg/1024px-Persona_5_logo.svg.png"
-                            height="100px" alt="" srcset=""></span> se reúnem. <br> Faça o cadastro para desbloquear as notícias e quiz!</SPAN>
+                            height="75px" alt="" srcset=""></span> se reúnem. <br> Leia mais logo abaixo!</SPAN>
+            </div>
+        </div>
+    </div>
+    <div class="div_informacoes">
+        <div class="card_index">
+            Ao se cadastrar neste site, você terá um hub das notícias mais atualizadas sobre a franquia Persona como um
+            todo, além de desbloquear um quiz de conhecimentos sobre <span><img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Persona_5_logo.svg/1024px-Persona_5_logo.svg.png"
+                    height="75px" alt="" srcset=""></span> e seu voto de favorito contará para o ranking dos personagens
+            mais populares
+        </div>
+        <div class="div_noticias">
+            <div id="card_noticias">
+
             </div>
         </div>
     </div>
     <div class="div_populares">
-        <div class="div_lista">
-            <H1>Ranking de popularidade:</H1>
-            <div class="div_personagens">
-            </div>
+        <H1>Ranking de popularidade:</H1>
+        <div id="div_personagens">
+            <div id="coluna1"></div>
+            <div id="coluna2"></div>
         </div>
     </div>
     <div class="footer">
-
+        <div>Desenvolvido por João Pedro Coelho Guimarães, de fã para fã.</div>
+        <img src="https://img1.picmix.com/output/stamp/thumb/0/7/4/3/2613470_313c5.gif" height="50px" alt="">
     </div>
 </body>
 
 </html>
 <script src="main.js">
+</script>
+<script>
+    if (sessionStorage.NOME_USUARIO == undefined) {
+        b_usuario.innerHTML = 'visitante'
+    } else {
+        b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    }
+
+
+    /* REQUISIÇÃO DE PERSONAGENS FAVORITOS */
+
+    function colocarImagem(vetor) {
+        coluna1.innerHTML = ''
+        coluna2.innerHTML = ''
+        for (let i = 0; i < vetor.length; i++) {
+            if (vetor[i].personagemFavorito == 'Morgana') {
+                coluna1.innerHTML += `<div><img src="assets/CONFIDANTS/morgana.png" alt="" width="200px"><br> Morgana <br> Votos: ${vetor[i].Votos}</div>`;
+            } else if (vetor[i].personagemFavorito == 'Joker') {
+                coluna1.innerHTML += `<div><img src="assets/CONFIDANTS/joker.png" alt="" width="300px"><br> Joker <br> Votos: ${vetor[i].Votos}</div>`;
+            } else if (vetor[i].personagemFavorito == 'Ann') {
+                coluna1.innerHTML += `<div><img src="assets/CONFIDANTS/ann.png" alt="" width="200px"><br> Ann <br> Votos: ${vetor[i].Votos}</div>`;
+            } else if (vetor[i].personagemFavorito == 'Ryuji') {
+                coluna1.innerHTML += `<div><img src="assets/CONFIDANTS/ryuji.png" alt="" width="200px"><br> Ryuji <br> Votos: ${vetor[i].Votos}</div>`;
+            } else if (vetor[i].personagemFavorito == 'Yusuke') {
+                coluna1.innerHTML += `<div><img src="assets/CONFIDANTS/yusuke.png" alt="" width="200px"><br> Yusuke <br> Votos: ${vetor[i].Votos}</div>`;
+            } else if (vetor[i].personagemFavorito == 'Makoto') {
+                coluna2.innerHTML += `<div><img src="assets/CONFIDANTS/makoto.png" alt="" width="200px"><br> Makoto <br> Votos: ${vetor[i].Votos}</div>`;
+            } else if (vetor[i].personagemFavorito == 'Futaba') {
+                coluna2.innerHTML += `<div><img src="assets/CONFIDANTS/futaba.png" alt="" width="200px"><br> Futaba <br> Votos: ${vetor[i].Votos}</div>`;
+            } else if (vetor[i].personagemFavorito == 'Haru') {
+                coluna2.innerHTML += `<div><img src="assets/CONFIDANTS/haru.png" alt="" width="200px"><br> Haru <br> Votos: ${vetor[i].Votos}</div>`;
+            } else if (vetor[i].personagemFavorito == 'Akechi') {
+                coluna2.innerHTML += `<div><img src="assets/CONFIDANTS/akechi.png" alt="" width="200px"><br> Akechi <br> Votos: ${vetor[i].Votos}</div>`;
+            }
+        }
+    }
+
+    function rankFavoritos() {
+        fetch(`/ranking/listarFavoritos`, {
+            method: 'get',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(resposta)
+                    colocarImagem(resposta)
+                })
+            }
+        }).catch(function (response) {
+            console.log(`#ERRO: ${response}`)
+        })
+    }
+
+
 </script>
