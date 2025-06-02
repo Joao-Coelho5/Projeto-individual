@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<style>
+    body{
+        margin: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    #div_inputs{
+        margin-top: 300px;
+        width: 500px;
+        background-color: rgba(219, 219, 219, 0.844);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .footer{
+        position: absolute;
+        bottom: 0;
+    }
+</style>
+
+<body>
+    <div class="navbar">
+        <div class="nav_logo">
+            <a href="index.html"><img src="assets/logo.webp" height="100px" alt="" srcset="" class="logo"></a>
+            <div class="hello"><span>Bem-Vindo </span><span id="b_usuario"></span>!</div>
+        </div>
+        <div class="nav_botoes">
+            <a href="cadastro.html"><button class="botoes">Cadastro</button></a>
+            <a href="login.html"><button class="botoes">Login</button></a>
+            <a href="quiz.html"><button class="botoes">QUIZ !</button></a>
+            <a href="dashboards.html"><button class="botoes">Dashboards</button></a>
+        </div> 
+    </div> 
+    <div id="div_inputs">
+            Titulo da notícia: <input type="text" id="ipt_titulo"> <br>
+            Data de cadastro: <input type="date" id="ipt_data_cadastro"> <br>
+            Descrição da notícia: <textarea name="" id="ipt_descricao" rows="8" cols="50" maxlength="500"></textarea> <br>
+            Link da notícia: <input type="text" id="ipt_link"> <br>
+            <button onclick="cadastrarNoticias()">CADASTRAR NOTICIA</button>
+    </div>
+    <div class="footer">
+        <div>Desenvolvido por João Pedro Coelho Guimarães, de fã para fã.</div>
+        <img src="https://img1.picmix.com/output/stamp/thumb/0/7/4/3/2613470_313c5.gif" height="50px" alt="">
+    </div>
+</body>
+
+</html>
+<script>
+
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    function cadastrarNoticias() {
+
+        var tituloVar = ipt_titulo.value;
+        var dataVar = ipt_data_cadastro.value;
+        var descricaoVar = ipt_descricao.value;
+        var linkVar = ipt_link.value;
+
+        // Verificando se há algum campo em branco
+        if (
+            tituloVar == "" ||
+            dataVar == "" ||
+            descricaoVar == "" ||
+            linkVar == ""
+        ) {
+            Swal.fire({
+                title:'Algum campo em branco',
+                icon: 'error'
+            })
+
+            return false;
+        } else {
+            fetch("/noticias/cadastrarNoticias", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    tituloServer: tituloVar,
+                    dataServer: dataVar,
+                    descricaoServer: descricaoVar,
+                    linkServer: linkVar,
+                }),
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+                        Swal.fire({
+                            title: 'Notícia cadastrada com sucesso',
+                            icon: 'success'
+                        })
+
+                        setTimeout(() => {
+                            window.location = "index.html";
+                        }, "2000");
+
+                    } else {
+                        Swal.fire({
+                            title: 'Erro ao cadastrar notícia',
+                            icon: 'error'
+                        })
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                });
+            return false;
+        }
+    }
+</script>

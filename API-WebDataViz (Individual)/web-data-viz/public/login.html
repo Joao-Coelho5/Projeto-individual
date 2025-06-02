@@ -7,15 +7,20 @@
     <title>Login</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="assets/icone_site.png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="body_cadastro">
     <div class="navbar">
-        <a class="logo" href="index.html"><img src="Assets\logo.webp" height="100px" alt="" srcset=""></a>
-        <div class="btNav">
+        <div class="nav_logo">
+            <a href="index.html"><img src="assets/logo.webp" height="100px" alt="" srcset="" class="logo"></a>
+            <div class="hello"><span>Take your time, </span><span id="b_usuario">usuário</span>!</div>
+        </div>
+        <div class="nav_botoes">
             <a href="cadastro.html"><button class="botoes">Cadastro</button></a>
             <button class="botoes">Login</button>
             <a href="quiz.html"><button class="botoes">QUIZ !</button></a>
+            <a href="dashboards.html"><button class="botoes">Dashboards</button></a>
         </div>
     </div>
     <div class="div_container_login">
@@ -34,20 +39,25 @@
 </html>
 <script>
 
+    if (sessionStorage.NOME_USUARIO == undefined) {
+        b_usuario.innerHTML = 'visitante'
+    } else {
+        b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    }
+
     function entrar() {
-        //aguardar();
 
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Email/senha está em branco!)";
-            finalizarAguardar();
+            Swal.fire({
+                title: 'Email ou senha em branco!',
+                icon: 'error',
+                background: 'url(../assets/alertBack.jpg)',
+                color: 'white',
+            })
             return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -63,33 +73,33 @@
                 senhaServer: senhaVar
             })
         }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
 
             if (resposta.ok) {
                 console.log(resposta);
-
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
-
+                    Swal.fire({
+                        title: 'Login realizado com sucesso',
+                        icon: 'success',
+                        background: 'url(../assets/alertBack.jpg)',
+                        color: 'white',
+                    })
                     setTimeout(function () {
                         window.location = "quiz.html";
-                    }, 1000); // apenas para exibir o loading
-
+                    }, 1000);
                 });
 
             } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
+                Swal.fire({
+                    title: 'Insira suas informações novamente',
+                    icon: 'error',
+                    background: 'url(../assets/alertBack.jpg)',
+                    color: 'white',
+                })
             }
 
         }).catch(function (erro) {

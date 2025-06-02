@@ -1,4 +1,4 @@
-// sessão
+
 function validarSessao() {
     var email = sessionStorage.EMAIL_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
@@ -8,6 +8,7 @@ function validarSessao() {
     if (email != null && nome != null) {
         b_usuario.innerHTML = nome;
     } else {
+        alert('Faça login para liberar esta funcionalidade')
         window.location = "../login.html";
     }
 }

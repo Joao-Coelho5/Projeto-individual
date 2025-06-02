@@ -4,79 +4,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exemplo - Quiz</title>
+    <title>Quiz</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body class="body_quiz" onload="onloadEsconder()">
+<body class="body_quiz" onload="onloadEsconder(), validarSessao()">
     <div class="navbar">
         <div class="nav_logo">
-                <a href="index.html"><img src="assets/logo.webp" height="100px" alt="" srcset="" class="logo"></a>
+            <a href="index.html"><img src="assets/logo.webp" height="100px" alt="" srcset="" class="logo"></a>
             <div class="hello"><span>Take your time, </span><span id="b_usuario">usuário</span>!</div>
         </div>
         <div class="nav_botoes">
             <a href="cadastro.html"><button class="botoes">Cadastro</button></a>
             <a href="login.html"><button class="botoes">Login</button></a>
             <a href="quiz.html"><button class="botoes">QUIZ !</button></a>
+            <a href="dashboards.html"><button class="botoes">Dashboards</button></a>
         </div>
     </div>
-    <div id="pontuacaoEJogo">
-        <button class="botoes" onclick="iniciarQuiz()">INICIAR QUIZ</button>
-        <div id="pontuacao" class="flex-colunar width-fit-content border-primary">
-            <div id="pontuacaoDuranteJogo" class="flex-colunar padding-8">
-                <span class="width-fit-content">Quantidade de acertos: <span id="spanCertas"></span></span>
-                <span class="width-fit-content">Quantidade de erros: <span id="spanErradas"></span></span>
+    <div class="container_quiz">
+            <button class="botoes" id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
+            <div id="container_pontuacao">
+                <div id="pontuacao" class="flex-colunar width-fit-content border-primary">
+                    <div id="pontuacaoDuranteJogo" class="flex-colunar padding-8">
+                        <span class="width-fit-content">Quantidade de acertos: <span id="spanCertas"></span></span>
+                        <span class="width-fit-content">Quantidade de erros: <span id="spanErradas"></span></span>
+                    </div>
+                    <div id="pontuacaoFinalJogo" class="flex-colunar padding-8">
+                        <span id="pontuacaoFinal" class="width-fit-content">Pontuação Final:
+                            <span id="spanPontuacaoFinal">***</span>
+                        </span>
+                        <span id="msgFinal" class="width-fit-content">***</span>
+                    </div>
+                </div>
             </div>
-            <div id="pontuacaoFinalJogo" class="flex-colunar padding-8">
-                <span id="pontuacaoFinal" class="width-fit-content">Pontuação Final:
-                    <span id="spanPontuacaoFinal">***</span>
-                </span>
-                <span id="msgFinal" class="width-fit-content">***</span>
+            <div id="jogo" class="width-fit-content flex-colunar border-secondary">
+                <div id="infoQuestao" class="padding-8">
+                    <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
+                        questões.</span>
+                </div>
+                <div id="perguntaDaQuestaoAtual" class="padding-8">
+                    <span id="spanQuestaoExibida" class="text-bold"></span>
+                </div>
+                <div id="infoAlternativas" class="padding-8">
+                    <span><em>Escolha uma opção dentre as abaixo:</em></span>
+                </div>
+                <div id="opcoes" class="flex-colunar padding-8">
+                    <span>
+                        <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
+                        <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
+                    </span>
+                    <span>
+                        <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
+                        <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
+                    </span>
+                    <span>
+                        <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
+                        <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
+                    </span>
+                    <span>
+                        <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
+                        <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
+                    </span>
+                </div>
+                <div id="botoes" class="flex-colunar padding-8">
+                    <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
+                    <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
+                    <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
+                </div>
             </div>
-        </div>
-
-        <div id="jogo" class="width-fit-content flex-colunar border-secondary">
-
-            <div id="infoQuestao" class="padding-8">
-                <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
-                    questões.</span>
-            </div>
-
-            <div id="perguntaDaQuestaoAtual" class="padding-8">
-                <span id="spanQuestaoExibida" class="text-bold"></span>
-            </div>
-
-            <div id="infoAlternativas" class="padding-8">
-                <span><em>Escolha uma opção dentre as abaixo:</em></span>
-            </div>
-
-            <div id="opcoes" class="flex-colunar padding-8">
-                <span>
-                    <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
-                    <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
-                </span>
-                <span>
-                    <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
-                    <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
-                </span>
-                <span>
-                    <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
-                    <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
-                </span>
-                <span>
-                    <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
-                    <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
-                </span>
-            </div>
-
-            <div id="botoes" class="flex-colunar padding-8">
-                <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
-                <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
-                <!-- <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button> -->
-                <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
-            </div>
-
-        </div>
     </div>
     <div class="footer">
         <div>Desenvolvido por João Pedro Coelho Guimarães, de fã para fã.</div>
@@ -85,37 +81,103 @@
 </body>
 
 </html>
+
+<script src="js/sessao.js"></script>
 <script>
+
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     const listaDeQuestoes = [
 
         {
-            pergunta: "Qual mês tem 30 dias?",
-            alternativaA: "Janeiro",
-            alternativaB: "Dezembro",
-            alternativaC: "Junho",
-            alternativaD: "Agosto",
+            pergunta: "Qual é a persona inicial do joker?",
+            alternativaA: "Arsene",
+            alternativaB: "Zorro",
+            alternativaC: "Orpheus",
+            alternativaD: "Izanagi",
+            alternativaCorreta: "alternativaA"
+        },
+
+        {
+            pergunta: "Como os Phantom Thieves descobriram quem era o traidor?",
+            alternativaA: "Ouviram uma conversa",
+            alternativaB: "Nos arquivos roubados da Sae",
+            alternativaC: "Por causa da conversa sobre panquecas",
+            alternativaD: "Conversando com sombras nos mementos",
             alternativaCorreta: "alternativaC"
         },
 
         {
-            pergunta: "Quantas horas tem em um dia?",
-            alternativaA: "30 horas",
-            alternativaB: "38 horas",
-            alternativaC: "48 horas",
-            alternativaD: "24 horas",
+            pergunta: "Qual é o nome da música de batalha",
+            alternativaA: "Beneath the mask",
+            alternativaB: "Sunset bridge",
+            alternativaC: "Life will change",
+            alternativaD: "Last surprise",
             alternativaCorreta: "alternativaD"
         },
 
         {
-            pergunta: "Qual destes números é ímpar?",
-            alternativaA: "Dez",
-            alternativaB: "Doze",
-            alternativaC: "Oito",
-            alternativaD: "Onze",
-            alternativaCorreta: "alternativaD"
-        }
+            pergunta: 'Qual franquia originou persona?',
+            alternativaA: 'Warhammer',
+            alternativaB: 'Shin megami tensei',
+            alternativaC: 'Final fantasy',
+            alternativaD: 'Chrono trigger',
+            alternativaCorreta: 'alternativaB',
+        },
+
+        {
+            pergunta: 'Em que ano lançou Persona 5?',
+            alternativaA: '2017',
+            alternativaB: '2018',
+            alternativaC: '2015',
+            alternativaD: '2020',
+            alternativaCorreta: 'alternativaA',
+        },
+
+        {
+            pergunta: 'Qual o nome da escola dos protagonistas?',
+            alternativaA: 'Shujin Highschool',
+            alternativaB: 'Yasogami Highschool',
+            alternativaC: 'Gekkoukan Highschool',
+            alternativaD: 'Togami Highschool',
+            alternativaCorreta: 'alternativaA',
+        },
+
+        {
+            pergunta: 'O que o último palácio representa',
+            alternativaA: 'Os pensamentos negativos que todos escondem',
+            alternativaB: 'O medo da morte',
+            alternativaC: 'Fechar os olhos para a verdade por medo dela',
+            alternativaD: 'A preguiça de pensar por si próprio',
+            alternativaCorreta: 'alternativaD',
+        },
+
+        {
+            pergunta: 'Quem é o político que controlava parte do submundo de tóquio?',
+            alternativaA: 'Sadayo Kawakami',
+            alternativaB: 'Takaya Sakaki',
+            alternativaC: 'Masayoshi Shido',
+            alternativaD: 'Adachi Tohru',
+            alternativaCorreta: 'alternativaC',
+        },
+
+        {
+            pergunta: 'Qual abordagem da psicologia persona 5 se inspira?',
+            alternativaA: 'Psicanálise de freud',
+            alternativaB: 'Psicologia analítica de Jung',
+            alternativaC: 'Análise do Comportamento de Skinner',
+            alternativaD: 'Gestalt',
+            alternativaCorreta: 'alternativaB',
+        },
+
+        {
+            pergunta: 'Por que joker vai preso no começo do jogo',
+            alternativaA: 'Por vandalizar um monumento',
+            alternativaB: 'Por defender uma mulher que estava sendo atacada',
+            alternativaC: 'Por roubar um banco',
+            alternativaD: 'Por se envolver em uma briga de rua',
+            alternativaCorreta: 'alternativaB',
+        },
 
     ]
 
@@ -131,20 +193,20 @@
     function onloadEsconder() {
         document.getElementById('pontuacao').style.display = "none"
         document.getElementById('jogo').style.display = "none"
+        document.getElementById('container_pontuacao').style.display = "none"
     }
 
     function iniciarQuiz() {
         document.getElementById('pontuacao').style.display = "flex"
         document.getElementById('jogo').style.display = "flex"
         document.getElementById('btnIniciarQuiz').style.display = "none"
-
+        document.getElementById('container_pontuacao').style.display = "flex"
         document.getElementById('qtdQuestoes').innerHTML = quantidadeDeQuestoes
 
         preencherHTMLcomQuestaoAtual(0)
 
         btnSubmeter.disabled = false
         btnProx.disabled = true
-        // btnConcluir.disabled = true
         btnTentarNovamente.disabled = true
     }
 
@@ -154,7 +216,7 @@
         numeroDaQuestaoAtual = index
         console.log("questaoAtual")
         console.log(questaoAtual)
-        document.getElementById("spanNumeroDaQuestaoAtual").innerHTML = Number(index) + 1 // ajustando porque o index começa em 0
+        document.getElementById("spanNumeroDaQuestaoAtual").innerHTML = Number(index) + 1 
         document.getElementById("spanQuestaoExibida").innerHTML = questaoAtual.pergunta;
         document.getElementById("labelOpcaoUm").innerHTML = questaoAtual.alternativaA;
         document.getElementById("labelOpcaoDois").innerHTML = questaoAtual.alternativaB;
@@ -163,8 +225,7 @@
     }
 
     function submeter() {
-        const options = document.getElementsByName("option"); // recupera alternativas no html
-
+        const options = document.getElementsByName("option"); 
         let hasChecked = false
         for (let i = 0; i < options.length; i++) {
             if (options[i].checked) {
@@ -204,7 +265,13 @@
         if (numeroDaQuestaoAtual < quantidadeDeQuestoes - 1) {
             preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
         } else if (numeroDaQuestaoAtual == quantidadeDeQuestoes - 1) {
-            alert("Atenção... a próxima é a ultima questão!")
+            Swal.fire({
+                title:'Atenção... a próxima é a ultima questão!',
+                icon:'warning',
+                background:'url(../assets/alertBack.jpg)',
+                color: 'white',
+            })
+
             preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
         } else {
             finalizarJogo()
@@ -213,7 +280,6 @@
     }
 
     function tentarNovamente() {
-        // atualiza a página
         window.location.reload()
     }
 
@@ -227,7 +293,6 @@
 
         options.forEach((option) => {
             if (option.value === respostaQuestaoAtual) {
-                console.log("alternativaCorreta está no componente: " + alternativaCorreta)
                 alternativaCorreta = option.labels[0].id
             }
         })
@@ -274,15 +339,15 @@
         const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
 
         if (porcentagemFinalDeAcertos <= 0.3) {
-            textoParaMensagemFinal = "Parece que você não estudou..."
+            textoParaMensagemFinal = "Nem jogou e quer fazer quiz..."
             classComCoresParaMensagemFinal = "text-danger-with-bg"
         }
         else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 0.9) {
-            textoParaMensagemFinal = "Pode melhorar na próxima, hein!"
+            textoParaMensagemFinal = "Joga persona 5 de novo que você gabarita!"
             classComCoresParaMensagemFinal = "text-warning-with-bg"
         }
         else if (porcentagemFinalDeAcertos >= 0.9) {
-            textoParaMensagemFinal = "Uau, parabéns!"
+            textoParaMensagemFinal = "Um verdadeiro Phantom Aficionado"
             classComCoresParaMensagemFinal = "text-success-with-bg"
         }
 
@@ -300,5 +365,33 @@
         // btnConcluir.disabled = true
         btnTentarNovamente.disabled = false
 
+        guardarResultado()
+    }
+
+    function guardarResultado() {
+        var idUsuario = sessionStorage.ID_USUARIO
+        fetch(`/quiz/guardarResultado`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                pontuacaoServer: pontuacaoFinal,
+                idServer: idUsuario
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    console.log(resposta)
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                finalizarAguardar();
+            });
     }
 </script>

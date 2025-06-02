@@ -8,15 +8,14 @@ senha			varchar(45),
 email			varchar(45),
 dtNasc			date,
 personagemFavorito varchar(45),
-unique(email)
+unique key (email)
 );
 
 create table quiz(
+id				int primary key auto_increment,
 usuarioId		int,
-tentativa		int,
 acertos			int not null,
-foreign key (usuarioId)references usuario(id),
-primary key (usuarioId, tentativa)
+foreign key (usuarioId)references usuario(id)
 );
 
 insert into usuario(nome, senha, email, dtNasc, personagemFavorito)
@@ -27,4 +26,23 @@ from usuario
 group by personagemFavorito
 order by count(personagemFavorito) desc;
 
-select * from usuario;
+select 	* from usuario;
+select * from quiz;
+
+select u.personagemFavorito personagem, avg(q.acertos) acertos
+from quiz q
+join usuario u on u.id = q.usuarioId
+group by u.personagemFavorito;
+
+
+
+
+
+
+
+
+
+
+
+
+

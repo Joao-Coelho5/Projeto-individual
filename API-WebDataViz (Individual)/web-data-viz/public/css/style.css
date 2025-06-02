@@ -9,8 +9,8 @@ html,
 .body_cadastro {
     margin: 0;
     padding: 0;
-    background-image: url(https://i.redd.it/54obu7eenrq61.gif);
-    height: 100%;
+    background-image: url(../assets/P5WhiteStars.gif);/*estrela branca */
+    height: 74%;
 }
 
 @font-face {
@@ -19,10 +19,11 @@ html,
 }
 
 html,
-.body_quiz{
+.body_quiz {
     margin: 0;
     height: 100%;
 }
+
 /* INICIO HEADER/NAVBAR */
 .navbar {
 
@@ -40,18 +41,19 @@ html,
     border-bottom: 3px solid white;
 }
 
-.nav_logo{
+.nav_logo {
     display: flex;
     flex-direction: row;
     width: 100%;
 }
 
-.nav_botoes{
+.nav_botoes {
     height: 100%;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    margin-right: 20px;
 }
 
 
@@ -68,12 +70,12 @@ html,
     transition: 0.2s;
     position: relative;
     padding-left: 20px;
-    padding-right: 60px; /* espaço para imagem */
+    padding-right: 60px;
     text-align: center;
 }
 
 .botoes:hover {
-    font-size: 40px;
+    font-size: 35px;
 }
 
 .botoes::after {
@@ -83,7 +85,7 @@ html,
     transform: translateY(-50%);
     width: 30px;
     height: 30px;
-    background-image: url('../assets/facaP5-removebg-preview.png'); /* substitua pelo seu caminho */
+    background-image: url('../assets/facaP5-removebg-preview.png');
     background-size: contain;
     background-repeat: no-repeat;
     opacity: 0;
@@ -101,18 +103,17 @@ html,
     background-color: transparent;
     border: none;
     cursor: pointer;
-    transition: 0.2s;
 }
 
 .logo:hover {
-    height: 110px;
+    width: fit-content;
+    padding-left: 50px;
+    content: url(https://i.redd.it/gx0bs7jltgkz.gif);
 }
 
 .navbar .hello {
-    width: 390px;
+    width: fit-content;
     height: 100px;
-    background-image: url(../assets/caixaDeTexto.png);
-    background-size: cover;
     color: white;
     font-family: 'fonteP5';
     text-align: center;
@@ -166,7 +167,6 @@ html,
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 60px;
     font-family: 'fonteP5';
     font-size: 45px;
     color: white;
@@ -174,8 +174,7 @@ html,
     text-align: center;
     width: 100%;
     height: 100%;
-    background-image: url(../Assets/caixaVermelha1.webp);
-    padding-top: 15px;
+    background-color: rgba(0, 0, 0, 0.58);
     background-size: cover;
 }
 
@@ -185,7 +184,7 @@ html,
     width: 300px;
     height: 80px;
     background-image: url(../Assets/caixaDeTexto.png);
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-color: transparent;
     background-repeat: no-repeat;
@@ -194,8 +193,10 @@ html,
     font-family: 'fonteP5';
 }
 
+
+
 .div_populares {
-    height: 1600px;
+    height: fit-content;
     width: 100%;
     color: rgb(255, 255, 255);
     display: flex;
@@ -207,6 +208,7 @@ html,
 
 
 .div_populares h1 {
+    color: white;
     font-size: 60px;
     display: flex;
     align-items: center;
@@ -220,7 +222,7 @@ html,
     background-position: center;
 }
 
-.div_informacoes{
+.div_informacoes {
     height: 1000px;
     width: 100%;
     background-image: url(../assets/mementosWall.webp);
@@ -228,7 +230,7 @@ html,
     border-bottom: solid 2px white;
 }
 
-.card_index{
+.card_index {
     border-top: 3px solid white;
     border-bottom: 3px solid white;
     width: 100%;
@@ -241,7 +243,7 @@ html,
     text-align: center;
 }
 
-#div_personagens{
+#div_personagens {
     height: 55%;
     width: 90%;
     display: flex;
@@ -250,7 +252,7 @@ html,
     text-align: center;
 }
 
-#coluna1{
+#coluna1 {
     height: max-content;
     width: 50%;
     text-align: center;
@@ -258,17 +260,64 @@ html,
     font-size: 30px;
 }
 
-#coluna2{
+#coluna2 {
     height: max-content;
     width: 50%;
     font-family: 'fonteP5';
     font-size: 30px;
 }
-#coluna1 div, #coluna2 div{
+
+#coluna1 div,
+#coluna2 div {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+
+.div_noticias {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.div_noticias h1 {
+    color: white;
+    font-size: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 155px;
+    width: 38.5%;
+    font-family: 'fonteP5';
+    text-align: center;
+    background-image: url(../Assets/caixaDeTexto.png);
+    background-size: cover;
+    background-position: center;
+    padding-top: 10px;
+    overflow: scroll;
+    scrollbar-width: 0;
+}
+
+#card_noticias {
+    width: 70%;
+    height: 470px;
+    background-color: rgba(177, 19, 51, 0.89);
+    border-radius: 10px;
+    overflow-y: scroll;
+    color: white;
+}
+
+#div_noticia_individual{
+    text-align: center;
+    height: fit-content;
+    width: fit-content;
+    border-bottom: solid 2px white;
+    border-top: solid 2px white;
+    color: white;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.58);
 }
 
 /*FIM BODY INDEX */
@@ -300,22 +349,42 @@ html,
     text-align: center;
 }
 
-#coluna{
+#coluna {
     height: 80%;
     justify-content: space-around;
 }
 
-#card_cadastro select {
-    color: black;
-}
-
 .div_container button {
-    margin-top: 85px;
+    margin-top: 200px;
     height: fit-content;
     width: fit-content;
 }
 
+#div_carrossel {
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    width: 250px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    overflow-clip-margin: 1000px;
+}
 
+#div_carrossel input{
+    display: none;
+}
+
+.img_cadastro{
+    height: 100px;
+    width: 250px;
+    cursor: pointer;
+}
+
+.div_img_cadastro{
+    height: 100px;
+    width: 250px;
+    cursor: pointer;    
+}
 
 /* FIM CADASTRO */
 
@@ -341,7 +410,7 @@ html,
     align-items: center;
     justify-content: center;
     gap: 35px;
-    height: 70%;
+    height: 100;
     width: 700px;
     background-image: url(../Assets/p5x_bgstar_20230301.MP4_5x_loop720P_HD.gif);
     border: 3px solid white;
@@ -351,37 +420,11 @@ html,
 /* FIM LOGIN */
 
 
-/* INICIO CARD DE ERRO*/
-
-.alerta_erro {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.card_erro {
-    text-align: center;
-    display: none;
-    color: rgb(255, 255, 255);
-    width: 80px;
-    position: absolute;
-    border-radius: 4px;
-    border: #ED145B 3px solid;
-    padding: 10px;
-    margin-right: 10%;
-    margin-top: 50%;
-}
-
-.loading-div {
-    width: 50px;
-    display: none;
-    background-image: url(https://giffiles.alphacoders.com/610/61079.gif);
-}
 
 /* FOOTER */
-.footer{
+.footer {
     width: 100%;
-    height: 65px;
+    height: 70px;
     background-image: url(../assets/p5x_bgstar_20230301.MP4_5x_loop720P_HD.gif);
     background-size: cover;
     display: flex;
@@ -393,7 +436,7 @@ html,
     color: white;
 }
 
-.footer img{
+.footer img {
     display: flex;
     justify-self: flex-end;
 }
@@ -420,14 +463,45 @@ html,
     --new-white: #E8E8E8;
 }
 
-
-
-#pontuacaoEJogo{
-    margin-top: 110px;
-    height: 100%;
+.container_quiz {
+    padding-top: 110px;
+    height: 75%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+
+#jogo {
+    background-color: black;
+    color: white;
+    font-family: 'fonteP5';
+    width: fit-content;
+    height: fit-content;
+    font-size: 40px;
+    border-radius: 10px;
+}
+
+#container_pontuacao {
+    background-image: url(../assets/tvP4.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 350px;
+    width: 390px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 80px;
+    padding-right: 80px;
+}
+
+#pontuacao {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    border-radius: 10px;
+    color: black;
 }
 
 .flex-colunar {
@@ -439,17 +513,6 @@ html,
     width: fit-content;
 }
 
-.border-primary {
-    border: 3px solid var(--primary-brand-color);
-}
-
-.border-secondary {
-    border: 3px solid var(--secondary-brand-color);
-}
-
-.padding-8 {
-    padding: 8px;
-}
 
 .text-bold {
     font-weight: bold;
@@ -474,4 +537,47 @@ html,
     color: var(--new-gray);
 }
 
+#msgFinal {
+    width: 300px;
+}
+
+#btnIniciarQuiz {
+    background-image: url(../assets/caixaVermelhacom!.png);
+    width: 300px;
+    height: 150px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    padding-top: 40px;
+}
+
 /* FIM QUIZ */
+
+
+/* INÍCIO PÁGINA DASHBOARDS */
+
+.container_dashboards {
+    width: 100%;
+    height: 90%;
+    background-image: url();
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.card_dashboard {
+    margin-top: 110px;
+    border-radius: 10px;
+    height: 400px;
+    width: 400px;
+    background-color: rgb(236, 235, 235);
+}
+
+/* FIM DASHBOARDS */
+
+/* CADASTRO NOTICIAS */
+
+/* #ipt_descricao{
+    
+} */

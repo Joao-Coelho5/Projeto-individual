@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="assets/icone_site.png">
 </head>
 
-<body class="body_index" onload="carregar(), rankFavoritos()">
+<body class="body_index" onload="calendario(), rankFavoritos(), verificarADM(), verNoticias()">
     <div class="navbar">
         <div class="nav_logo">
             <img src="assets/logo.webp" height="100px" alt="" srcset="" class="logo">
@@ -19,6 +19,7 @@
             <a href="cadastro.html"><button class="botoes">Cadastro</button></a>
             <a href="login.html"><button class="botoes">Login</button></a>
             <a href="quiz.html"><button class="botoes">QUIZ !</button></a>
+            <a href="dashboards.html"><button class="botoes">Dashboards</button></a>
         </div>
     </div>
     <div class="pagina">
@@ -31,7 +32,7 @@
                 </div>
             </div>
             <div id="div_conteudo">
-                <SPAN>Bem vindo ao site Phantom-Aficionado, <br> onde os fãs de <span><img
+                <span>Bem vindo ao site Phantom-Aficionado, <br> onde os fãs de <span><img
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Persona_5_logo.svg/1024px-Persona_5_logo.svg.png"
                             height="75px" alt="" srcset=""></span> se reúnem. <br> Leia mais logo abaixo!</SPAN>
             </div>
@@ -46,9 +47,8 @@
             mais populares
         </div>
         <div class="div_noticias">
-            <div id="card_noticias">
-
-            </div>
+            <h1>NOTÍCIAS</h1><span id="span_noticias"></span>
+            <div id="card_noticias"></div>
         </div>
     </div>
     <div class="div_populares">
@@ -65,43 +65,34 @@
 </body>
 
 </html>
-<script src="main.js">
+<script src="js/main.js">
 </script>
 <script>
     if (sessionStorage.NOME_USUARIO == undefined) {
         b_usuario.innerHTML = 'visitante'
+        card_noticias.style = 'font-family:"fonteP5"; font-size:50px; text-align: center;'
+        card_noticias.innerHTML = 'CADASTRE-SE PARA LIBERAR AS NOTÍCIAS'
     } else {
         b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+        function verNoticias() {
+            fetch(`/noticias/verNoticias`, {
+                method: 'get',
+                headers: { 'Content-Type': 'application/json' }
+            }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(resposta)
+                        listarNoticias(resposta)
+                    })
+                }
+            }).catch(function (response) {
+                console.log(`#ERRO: ${response}`)
+            })
+        }
     }
 
 
     /* REQUISIÇÃO DE PERSONAGENS FAVORITOS */
-
-    function colocarImagem(vetor) {
-        coluna1.innerHTML = ''
-        coluna2.innerHTML = ''
-        for (let i = 0; i < vetor.length; i++) {
-            if (vetor[i].personagemFavorito == 'Morgana') {
-                coluna1.innerHTML += `<div><img src="assets/CONFIDANTS/morgana.png" alt="" width="200px"><br> Morgana <br> Votos: ${vetor[i].Votos}</div>`;
-            } else if (vetor[i].personagemFavorito == 'Joker') {
-                coluna1.innerHTML += `<div><img src="assets/CONFIDANTS/joker.png" alt="" width="300px"><br> Joker <br> Votos: ${vetor[i].Votos}</div>`;
-            } else if (vetor[i].personagemFavorito == 'Ann') {
-                coluna1.innerHTML += `<div><img src="assets/CONFIDANTS/ann.png" alt="" width="200px"><br> Ann <br> Votos: ${vetor[i].Votos}</div>`;
-            } else if (vetor[i].personagemFavorito == 'Ryuji') {
-                coluna1.innerHTML += `<div><img src="assets/CONFIDANTS/ryuji.png" alt="" width="200px"><br> Ryuji <br> Votos: ${vetor[i].Votos}</div>`;
-            } else if (vetor[i].personagemFavorito == 'Yusuke') {
-                coluna1.innerHTML += `<div><img src="assets/CONFIDANTS/yusuke.png" alt="" width="200px"><br> Yusuke <br> Votos: ${vetor[i].Votos}</div>`;
-            } else if (vetor[i].personagemFavorito == 'Makoto') {
-                coluna2.innerHTML += `<div><img src="assets/CONFIDANTS/makoto.png" alt="" width="200px"><br> Makoto <br> Votos: ${vetor[i].Votos}</div>`;
-            } else if (vetor[i].personagemFavorito == 'Futaba') {
-                coluna2.innerHTML += `<div><img src="assets/CONFIDANTS/futaba.png" alt="" width="200px"><br> Futaba <br> Votos: ${vetor[i].Votos}</div>`;
-            } else if (vetor[i].personagemFavorito == 'Haru') {
-                coluna2.innerHTML += `<div><img src="assets/CONFIDANTS/haru.png" alt="" width="200px"><br> Haru <br> Votos: ${vetor[i].Votos}</div>`;
-            } else if (vetor[i].personagemFavorito == 'Akechi') {
-                coluna2.innerHTML += `<div><img src="assets/CONFIDANTS/akechi.png" alt="" width="200px"><br> Akechi <br> Votos: ${vetor[i].Votos}</div>`;
-            }
-        }
-    }
 
     function rankFavoritos() {
         fetch(`/ranking/listarFavoritos`, {
@@ -120,4 +111,11 @@
     }
 
 
+
+
+    function verificarADM() {
+        if (sessionStorage.ID_USUARIO == 1) {
+            span_noticias.innerHTML += `<a href="cadastroNoticia.html">cadastrarNoticia</a>`
+        }
+    }
 </script>
