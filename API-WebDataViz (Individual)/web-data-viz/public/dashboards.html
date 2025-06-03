@@ -18,7 +18,7 @@
         </div>
         <div class="nav_botoes">
             <a href="cadastro.html"><button class="botoes">Cadastro</button></a>
-            <a href="login.html"><button class="botoes">Login</button></a>
+            <button id="bt_logout" onclick="limparSessao()" class="botoes">Logout</button>
             <a href="quiz.html"><button class="botoes">QUIZ !</button></a>
             <button class="botoes">Dashboards</button>
         </div>
@@ -40,7 +40,7 @@
 
 <script src="js/sessao.js"></script>
 <script>
-    //b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     function exibirAcertos() {
         fetch(`/quiz/exibirAcertos`, {

@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body class="body_cadastro">
+<body class="body_cadastro" onload="selecionar()">
     <div class="navbar">
         <div class="nav_logo">
             <a href="index.html"><img src="assets/logo.webp" height="100px" alt="" srcset="" class="logo"></a>
@@ -18,7 +18,8 @@
         </div>
         <div class="nav_botoes">
             <button class="botoes">Cadastro</button>
-            <a href="login.html"><button class="botoes">Login</button></a>
+            <a href="login.html"><button class="botoes" id="bt_login">Login</button></a>
+            <button id="bt_logout" onclick="limparSessao()" class="botoes">Logout</button>
             <a href="quiz.html"><button class="botoes">QUIZ !</button></a>
             <a href="dashboards.html"><button class="botoes">Dashboards</button></a>
         </div>
@@ -27,42 +28,44 @@
     <div class="div_container">
         <div id="card_cadastro">
             <div id="coluna">
-                Nome de usuário <br><input type="text" class="input" id="ipt_nome"> <br>
-                Data de nascimento <br> <input type="date" class="input" id="ipt_dtNasc"> <br>
-                Email <br> <input type="text" class="input" id="ipt_email"> <br>
+                Nome de usuário <input type="text" class="input" id="ipt_nome"> 
+                Data de nascimento  <input type="date" class="input" id="ipt_dtNasc"> 
+                Email  <input type="text" class="input" id="ipt_email"> 
             </div>
             <div id="coluna">
-                Senha <br> <input type="password" class="input" id="ipt_senha"> <br>
-                Confirme sua senha: <br> <input type="password" class="input" id="ipt_confirmacao_senha"> <br>
+                Senha  <input type="password" class="input" id="ipt_senha"> 
+                Confirme sua senha:  <input type="password" class="input" id="ipt_confirmacao_senha"> 
                 Phantom Thief favorito:
                 <div id="div_carrossel">
-                    <label class="div_img_cadastro"><img src="assets/CONFIDANTS/jokerCadastro.png"
-                            class="img_cadastro"><input type="radio" name="escolhaPersonagem" id=""
-                            value="Joker"></label>
-                    <label class="div_img_cadastro"><img src="assets/CONFIDANTS/morganaCadastro.png"
-                            class="img_cadastro"><input type="radio" name="escolhaPersonagem" id=""
-                            value="Morgana"></label>
-                    <label class="div_img_cadastro"><img src="assets/CONFIDANTS/ryujiCadastro.png"
-                            class="img_cadastro"><input type="radio" name="escolhaPersonagem" id=""
-                            value="Ryuji"></label>
-                    <label class="div_img_cadastro"><img src="assets/CONFIDANTS/annCadastro.png"
-                            class="img_cadastro"><input type="radio" name="escolhaPersonagem" id="" value="Ann"></label>
-                    <label class="div_img_cadastro"><img src="assets/CONFIDANTS/yusukeCadastro.png"
-                            class="img_cadastro"><input type="radio" name="escolhaPersonagem" id=""
-                            value="Yusuke"></label>
-                    <label class="div_img_cadastro"><img src="assets/CONFIDANTS/makotoCadastro.png"
-                            class="img_cadastro"><input type="radio" name="escolhaPersonagem" id=""
-                            value="Makoto"></label>
-                    <label class="div_img_cadastro"><img src="assets/CONFIDANTS/futabaCadastro.png"
-                            class="img_cadastro"><input type="radio" name="escolhaPersonagem" id=""
-                            value="Futaba"></label>
-                    <label class="div_img_cadastro"><img src="assets/CONFIDANTS/haruCadastro.png"
-                            class="img_cadastro"><input type="radio" name="escolhaPersonagem" id=""
-                            value="Haru"></label>
-                    <label class="div_img_cadastro"><img src="assets/CONFIDANTS/akechiCadastro.png"
-                            class="img_cadastro"><input type="radio" name="escolhaPersonagem" id=""
-                            value="Akechi"></label>
+                    <label onclick="selecionar()" id="div_img_cadastro"><img src="assets/CONFIDANTS/jokerCadastro.png"
+                            class="img_cadastro"><input type="radio" name="escolhaPersonagem" id="" value="Joker">
+                    </label>
+                    <label onclick="selecionar()" id="div_img_cadastro"><img src="assets/CONFIDANTS/morganaCadastro.png"
+                            class="img_cadastro"><input type="radio" name="escolhaPersonagem" id="" value="Morgana">
+                    </label>
+                    <label onclick="selecionar()" id="div_img_cadastro"><img src="assets/CONFIDANTS/ryujiCadastro.png"
+                            class="img_cadastro"><input type="radio" name="escolhaPersonagem" id="" value="Ryuji">
+                    </label>
+                    <label onclick="selecionar()" id="div_img_cadastro"><img src="assets/CONFIDANTS/annCadastro.png"
+                            class="img_cadastro"><input type="radio" name="escolhaPersonagem" id="" value="Ann">
+                    </label>
+                    <label onclick="selecionar()" id="div_img_cadastro"><img src="assets/CONFIDANTS/yusukeCadastro.png"
+                            class="img_cadastro"><input type="radio" name="escolhaPersonagem" id="" value="Yusuke">
+                    </label>
+                    <label onclick="selecionar()" id="div_img_cadastro"><img src="assets/CONFIDANTS/makotoCadastro.png"
+                            class="img_cadastro"><input type="radio" name="escolhaPersonagem" id="" value="Makoto">
+                    </label>
+                    <label onclick="selecionar()" id="div_img_cadastro"><img src="assets/CONFIDANTS/futabaCadastro.png"
+                            class="img_cadastro"><input type="radio" name="escolhaPersonagem" id="" value="Futaba">
+                    </label>
+                    <label onclick="selecionar()" id="div_img_cadastro"><img src="assets/CONFIDANTS/haruCadastro.png"
+                            class="img_cadastro"><input type="radio" name="escolhaPersonagem" id="" value="Haru">
+                    </label>
+                    <label onmouseup="selecionar()" id="div_img_cadastro"><img src="assets/CONFIDANTS/akechiCadastro.png"
+                            class="img_cadastro"><input type="radio" name="escolhaPersonagem" id="" value="Akechi">
+                    </label>
                 </div>
+                <div id="div_selecionado">Você selecionou:</div>
             </div>
         </div>
         <button class="botoes" onclick="cadastrar()">CADASTRAR !</button>
@@ -80,8 +83,12 @@
 
     if (sessionStorage.NOME_USUARIO == undefined) {
         b_usuario.innerHTML = 'visitante'
+        bt_login.style.display = 'true'
+        bt_logout.style.display = 'none'
     } else {
         b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+        bt_login.style.display = 'none'
+        bt_logout.style.display = 'true'
     }
 
     function cadastrar() {
@@ -98,7 +105,7 @@
             senhaVar == "" ||
             confirmacaoSenhaVar == "" ||
             dtNasc == "" ||
-            personagemFavorito == ""
+            document.querySelector('input[name="escolhaPersonagem"]:checked').value == null
         ) {
             Swal.fire({
                 title: 'Existem campos vazios!',
@@ -155,4 +162,7 @@
         return false;
     }
 
+    function selecionar(){
+        div_selecionado.innerHTML = `Você selecionou: ${document.querySelector('input[name="escolhaPersonagem"]:checked').value} `
+    }
 </script>

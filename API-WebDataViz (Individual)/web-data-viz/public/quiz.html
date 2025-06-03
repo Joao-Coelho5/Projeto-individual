@@ -17,7 +17,8 @@
         </div>
         <div class="nav_botoes">
             <a href="cadastro.html"><button class="botoes">Cadastro</button></a>
-            <a href="login.html"><button class="botoes">Login</button></a>
+            <a href="login.html"><button class="botoes" id="bt_login">Login</button></a>
+            <button id="bt_logout" onclick="limparSessao()" class="botoes">Logout</button>
             <a href="quiz.html"><button class="botoes">QUIZ !</button></a>
             <a href="dashboards.html"><button class="botoes">Dashboards</button></a>
         </div>
@@ -85,7 +86,15 @@
 <script src="js/sessao.js"></script>
 <script>
 
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    if (sessionStorage.NOME_USUARIO == undefined) {
+        b_usuario.innerHTML = 'visitante'
+        bt_login.style.display = 'true'
+        bt_logout.style.display = 'none'
+    } else {
+        b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+        bt_login.style.display = 'none'
+        bt_logout.style.display = 'true'
+    }
 
     const listaDeQuestoes = [
 

@@ -190,7 +190,7 @@ html,
     background-repeat: no-repeat;
     text-align: center;
     border: solid transparent;
-    font-family: 'fonteP5';
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
 }
 
 
@@ -320,6 +320,10 @@ html,
     background-color: rgba(0, 0, 0, 0.58);
 }
 
+a{
+    color: white;
+}
+
 /*FIM BODY INDEX */
 
 /* INICIO CADASTRO*/
@@ -351,7 +355,8 @@ html,
 
 #coluna {
     height: 80%;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
 }
 
 .div_container button {
@@ -362,12 +367,11 @@ html,
 
 #div_carrossel {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     height: 100px;
     width: 250px;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    overflow-clip-margin: 1000px;
+    overflow: scroll;
+    margin-left: 20px;
 }
 
 #div_carrossel input{
@@ -380,10 +384,14 @@ html,
     cursor: pointer;
 }
 
-.div_img_cadastro{
-    height: 100px;
+#div_img_cadastro{
+    height: 120px;
     width: 250px;
     cursor: pointer;    
+}
+
+#div_selecionado{
+    font-size: 35px;
 }
 
 /* FIM CADASTRO */
